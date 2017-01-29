@@ -1,0 +1,34 @@
+{
+  "name": "swaggerspy",
+  "version": "0.0.1",
+  "description": "Proxy to generate swagger specs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "swagger",
+    "openapi",
+    "proxy",
+    "generate"
+  ],
+  "author": "Hans Klunder",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-http-proxy": "^0.11.0",
+    "generate-schema": "^2.3.1",
+    "http-proxy": "^1.16.2",
+    "nock": "^9.0.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seriousme/swaggerSpy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seriousme/swaggerSpy/issues"
+  },
+  "homepage": "https://github.com/seriousme/swaggerSpy#readme"
+}

@@ -16,6 +16,7 @@
   "author": "Hans Klunder",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "express-http-proxy": "^0.11.0",
     "generate-schema": "^2.3.1",

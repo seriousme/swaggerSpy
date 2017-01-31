@@ -1,10 +1,10 @@
-const url = require('url')
-const data = require('./testdata.json')
+const Url = require('url')
 
+const SwaggerTemplate = require('./template.json')
 // console.log(data[0])
 
 const GenerateSchema = require('generate-schema')
-var operationIdSuffix = 0
+var operationIdSuffix
 
 // turn an array of keys and values into an object
 // make keys lowercase
@@ -15,12 +15,21 @@ function kvArray2object (arr) {
   }
   return obj
 }
+
+// small helper to see if an object is empty
+function isValidObject (obj) {
+  if (typeof (obj) !== 'object') {
+    return false
+  }
+  return (Object.keys(obj).length > 0)
+}
+
 // parse the nock database into an intermediate structure
 // optimized for generation
 function parseNock (nDb) {
   var intermediate = {}
   nDb.forEach(req => {
-    const urlObj = url.parse(req.scope)
+    const urlObj = Url.parse(req.scope)
     const host = urlObj.host
     const scheme = (urlObj.protocol.replace(':', ''))
     if (typeof (intermediate[host]) === 'undefined') {
@@ -28,14 +37,16 @@ function parseNock (nDb) {
     }
     const scope = intermediate[host]
     scope.schemes[scheme] = true
-    if (typeof (scope.paths[req.path]) === 'undefined') {
-      scope.paths[req.path] = {}
+    const pathObj = Url.parse(req.path, true)
+    req.pathname = pathObj.pathname
+    if (!isValidObject(scope.paths[req.pathname])) {
+      scope.paths[req.pathname] = {}
     }
-    const path = scope.paths[req.path]
-    if (typeof (path[req.method]) === 'undefined') {
+    const path = scope.paths[req.pathname]
+    if (!isValidObject(path[req.method])) {
       path[req.method] = []
     }
-    path[req.method].push({
+    const data = {
       request: {
         headers: req.reqheaders,
         body: req.body
@@ -45,7 +56,14 @@ function parseNock (nDb) {
         headers: kvArray2object(req.rawHeaders),
         body: req.response
       }
-    })
+    }
+    if (typeof (req.response.status) !== 'undefined') {
+      data.response.status = req.response.status
+    }
+    if (isValidObject(pathObj.query)) {
+      data.request.query = pathObj.query
+    }
+    path[req.method].push(data)
   })
   // console.log('intermediate', JSON.stringify(intermediate, null, 2))
   return intermediate
@@ -58,7 +76,7 @@ function findBasePath (paths) {
   const sep = '/'
   if (paths.length < 2) return ''
   var prefix = paths[0]
-  var maxLength = prefix.length
+  var maxLength = prefix.length - 1
   for (var i = 0; i < paths.length; i++) {
     var lastSep = -1
     for (var j = 0; j < maxLength; j++) {
@@ -89,30 +107,54 @@ function stripContentType (type) {
 function getContentTypes (data, type) {
   var types = {}
   for (var i = 0; i < data.length; i++) {
-    types[ stripContentType(data[i][type].headers['content-type']) ] = true
+    const contentType = stripContentType(data[i][type].headers['content-type'])
+    if (typeof (contentType) === 'string') {
+      types[contentType] = true
+    }
   }
   return Object.keys(types)
 }
 
 // generate parameters for the operation
 function generateParameters (swagger, data, contentTypes) {
-  swagger.parameters = []
+  // gather info
+  const reqQuery = data.map(el => {
+    return el.request.query
+  }).filter(el => { return isValidObject(el) })
+  // handle query parameters
+  if (isValidObject(reqQuery)) {
+    const schema = GenerateSchema.json(reqQuery).items.properties
+    swagger.parameters = []
+    for (var item in schema) {
+      const type = schema[item].type
+      swagger.parameters.push({
+        'name': item,
+        'in': 'query',
+        'type': type,
+        'description': 'Generated parameter description',
+        'required': false
+      })
+    }
+    return
+  }
   // handle application/json
-  if ((typeof (contentTypes) === 'object') && (contentTypes[0] === 'application/json')) {
+  if (isValidObject(contentTypes) && (contentTypes[0] === 'application/json')) {
     // gather all body data for this path
     const reqData = data.map(el => {
       return el.request.body
-    }).filter(el => { return (typeof (el) === 'object') })
+    }).filter(el => { return isValidObject(el) })
     // create the schema
     const schema = GenerateSchema.json(reqData)
     // and create the parameters section
+    swagger.parameters = []
     swagger.parameters.push({
       'name': 'Generated parameter name',
       'in': 'body',
       'description': 'Generated parameter description',
-      'required': true,
+      'required': false,
       'schema': schema.items
     })
+    return
   }
 }
 
@@ -124,13 +166,13 @@ function generateResponses (swagger, data) {
   for (var i = 0; i < data.length; i++) {
     const status = data[i].response.status
     const body = data[i].response.body
-    if (typeof (byStatus[status]) === 'undefined') {
+    if (!isValidObject(byStatus[status])) {
       byStatus[status] = {
         type: data[i].response.headers['content-type']
       }
     }
-    if ((typeof (body) === 'object') && (Object.keys(body).length > 0)) {
-      if (typeof (byStatus[status].data) === 'undefined') {
+    if (isValidObject(body)) {
+      if (!isValidObject(byStatus[status].data)) {
         byStatus[status].data = []
       }
       byStatus[status].data.push(body)
@@ -143,7 +185,7 @@ function generateResponses (swagger, data) {
       'description': 'Generated description'
     }
     // handle application/json payload
-    if (typeof (byStatus[status].data) === 'object') {
+    if (isValidObject(byStatus[status].data)) {
       const schema = GenerateSchema.json(byStatus[status].data)
       swagger.responses[status].schema = schema.items
     }
@@ -162,10 +204,10 @@ function generateMethod (swagger, method, methodInfo) {
   // add  produces and consumes
   const consumes = getContentTypes(methodInfo, 'request')
   const produces = getContentTypes(methodInfo, 'response')
-  if (typeof (consumes) === 'object') {
+  if (isValidObject(consumes)) {
     thisMethod.consumes = consumes
   }
-  if (typeof (produces) === 'object') {
+  if (isValidObject(produces)) {
     thisMethod.produces = produces
   }
   // add parameters
@@ -176,7 +218,7 @@ function generateMethod (swagger, method, methodInfo) {
 
 // generate the path section of the spec (e.g. '/v1/api/pets' etc)
 function generatePath (swagger, path, pathInfo) {
-  if (typeof (swagger[path]) === 'undefined') {
+  if (!isValidObject(swagger[path])) {
     swagger[path] = {}
   }
   for (var method in pathInfo) {
@@ -204,7 +246,9 @@ function generatePaths (swagger, pathsInfo) {
 // the intermediate structure
 function generateSwagger (intermediate) {
   // console.log(JSON.stringify(intermediate, null, 2))
-  var swagger = require('./template.json')
+  // require() caches its data, so we need to deep clone the template here
+  var swagger = JSON.parse(JSON.stringify(SwaggerTemplate))
+  // add more content to the template
   for (var host in intermediate) {
     swagger.host = host
     swagger.schemes = Object.keys(intermediate[host].schemes)
@@ -213,5 +257,9 @@ function generateSwagger (intermediate) {
   return swagger
 }
 
-const swagger = generateSwagger(parseNock(data))
-console.log(JSON.stringify(swagger, null, 2))
+function generate (data) {
+  operationIdSuffix = 0
+  return generateSwagger(parseNock(data))
+}
+
+module.exports = { generate: generate }

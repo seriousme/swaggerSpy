@@ -1,8 +1,0 @@
-{  "metadata": {
-        "name": "hello"
-    },
-    "environment": {
-        "name": "nodejs"
-    },
-    "code": "bW9kdWxlLmV4cG9ydHMgPSBmdW5jdGlvbihjb250ZXh0LCBjYWxsYmFjaykgeyBjYWxsYmFjaygyMDAsICJIZWxsbywgd29ybGQhXG4iKTsgfSANCg=="
-}

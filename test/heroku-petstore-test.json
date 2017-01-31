@@ -1,0 +1,303 @@
+[{
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "GET",
+    "path": "/pet/?limit=11",
+    "body": "",
+    "status": 200,
+    "response": [{
+        "_id": "560eea43a62de703006d2b57",
+        "name": "Goofy (🐕)",
+        "birthday": 2008,
+        "__v": 0
+    }, {
+        "_id": "560eea59a62de703006d2b58",
+        "name": "Andy 🐵🙈🙉",
+        "birthday": 2010,
+        "__v": 0
+    }, {
+        "_id": "560eea70a62de703006d2b59",
+        "name": "Kitty 😼🙀",
+        "birthday": 1999,
+        "__v": 0
+    }, {
+        "_id": "560eea8ca62de703006d2b5a",
+        "name": "Emoji Pet 🐱",
+        "birthday": 2015,
+        "__v": 0
+    }, {
+        "_id": "560eeaaea62de703006d2b5b",
+        "name": "🐤Chick🐔",
+        "birthday": 2013,
+        "__v": 0
+    }, {
+        "_id": "560eeabca62de703006d2b5c",
+        "name": "🐷",
+        "birthday": 2012,
+        "__v": 0
+    }, {
+        "_id": "560eeacea62de703006d2b5d",
+        "name": "🐠",
+        "birthday": 2014,
+        "__v": 0
+    }, {
+        "_id": "560eeb09a62de703006d2b5e",
+        "name": "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝",
+        "birthday": 1890,
+        "__v": 0
+    }, {
+        "_id": "560eeb1ba62de703006d2b5f",
+        "name": "🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳",
+        "birthday": 1494,
+        "__v": 0
+    }, {
+        "_id": "561398c4e0cf0c0300ed944b",
+        "name": "Cookie",
+        "__v": 0
+    }, {
+        "_id": "561398ebe0cf0c0300ed944c",
+        "name": "Cookie",
+        "__v": 0
+    }],
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Content-Type", "application/json; charset=utf-8", "Content-Length", "902", "Etag", "W/\"386-1676390450\"", "Date", "Mon, 30 Jan 2017 17:30:18 GMT", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, sdch, br",
+        "connection": "close",
+        "content-length": 0,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}, {
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "GET",
+    "path": "/pet/?limit=12",
+    "body": "",
+    "status": 200,
+    "response": [{
+        "_id": "560eea43a62de703006d2b57",
+        "name": "Goofy (🐕)",
+        "birthday": 2008,
+        "__v": 0
+    }, {
+        "_id": "560eea59a62de703006d2b58",
+        "name": "Andy 🐵🙈🙉",
+        "birthday": 2010,
+        "__v": 0
+    }, {
+        "_id": "560eea70a62de703006d2b59",
+        "name": "Kitty 😼🙀",
+        "birthday": 1999,
+        "__v": 0
+    }, {
+        "_id": "560eea8ca62de703006d2b5a",
+        "name": "Emoji Pet 🐱",
+        "birthday": 2015,
+        "__v": 0
+    }, {
+        "_id": "560eeaaea62de703006d2b5b",
+        "name": "🐤Chick🐔",
+        "birthday": 2013,
+        "__v": 0
+    }, {
+        "_id": "560eeabca62de703006d2b5c",
+        "name": "🐷",
+        "birthday": 2012,
+        "__v": 0
+    }, {
+        "_id": "560eeacea62de703006d2b5d",
+        "name": "🐠",
+        "birthday": 2014,
+        "__v": 0
+    }, {
+        "_id": "560eeb09a62de703006d2b5e",
+        "name": "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝",
+        "birthday": 1890,
+        "__v": 0
+    }, {
+        "_id": "560eeb1ba62de703006d2b5f",
+        "name": "🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳",
+        "birthday": 1494,
+        "__v": 0
+    }, {
+        "_id": "561398c4e0cf0c0300ed944b",
+        "name": "Cookie",
+        "__v": 0
+    }, {
+        "_id": "561398ebe0cf0c0300ed944c",
+        "name": "Cookie",
+        "__v": 0
+    }, {
+        "_id": "5613e983974bc80300878c7b",
+        "name": "MY NAME",
+        "__v": 0
+    }],
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Content-Type", "application/json; charset=utf-8", "Content-Length", "962", "Etag", "W/\"3c2-1129166776\"", "Date", "Mon, 30 Jan 2017 17:31:51 GMT", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, sdch, br",
+        "connection": "close",
+        "content-length": 0,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}, {
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "POST",
+    "path": "/pet/",
+    "body": {
+        "name": "Donald",
+        "birthday": 1970
+    },
+    "status": 201,
+    "response": {
+        "__v": 0,
+        "name": "Donald",
+        "birthday": 1970,
+        "_id": "588f78be88a082040002a4f7"
+    },
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Content-Type", "application/json; charset=utf-8", "Content-Length", "74", "Date", "Mon, 30 Jan 2017 17:32:46 GMT", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "content-type": "application/json",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, br",
+        "connection": "close",
+        "content-length": 42,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}, {
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "PUT",
+    "path": "/pet/",
+    "body": {
+        "name": "Donald",
+        "birthday": 1971
+    },
+    "status": 400,
+    "response": {
+        "status": 404,
+        "message": "Object not found",
+        "name": "ObjectNotFound",
+        "errors": {
+            "_id": {
+                "message": "Could not find object with specified attributes"
+            }
+        }
+    },
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Content-Type", "application/json; charset=utf-8", "Content-Length", "146", "Date", "Mon, 30 Jan 2017 17:33:09 GMT", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "content-type": "application/json",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, sdch, br",
+        "connection": "close",
+        "content-length": 42,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}, {
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "PUT",
+    "path": "/pet/",
+    "body": {
+        "name": "Donald2",
+        "birthday": 1971
+    },
+    "status": 400,
+    "response": {
+        "status": 404,
+        "message": "Object not found",
+        "name": "ObjectNotFound",
+        "errors": {
+            "_id": {
+                "message": "Could not find object with specified attributes"
+            }
+        }
+    },
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Content-Type", "application/json; charset=utf-8", "Content-Length", "146", "Date", "Mon, 30 Jan 2017 17:33:38 GMT", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "content-type": "application/json",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, sdch, br",
+        "connection": "close",
+        "content-length": 43,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}, {
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "GET",
+    "path": "/pet/588f78be88a082040002a4f7",
+    "body": "",
+    "status": 200,
+    "response": {
+        "_id": "588f78be88a082040002a4f7",
+        "name": "Donald",
+        "birthday": 1970,
+        "__v": 0
+    },
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Content-Type", "application/json; charset=utf-8", "Content-Length", "74", "Etag", "W/\"4a-2817546009\"", "Date", "Mon, 30 Jan 2017 17:34:28 GMT", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, sdch, br",
+        "connection": "close",
+        "content-length": 0,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}, {
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "GET",
+    "path": "/pet/588f78be88a082040002a4f8",
+    "body": "",
+    "status": 200,
+    "response": "",
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Date", "Mon, 30 Jan 2017 17:34:36 GMT", "Transfer-Encoding", "chunked", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, sdch, br",
+        "connection": "close",
+        "content-length": 0,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}, {
+    "scope": "http://petstore-api.herokuapp.com:80",
+    "method": "GET",
+    "path": "/pet/588f78be88a082040002a4f9",
+    "body": "",
+    "status": 200,
+    "response": "",
+    "rawHeaders": ["Server", "Cowboy", "Connection", "close", "X-Powered-By", "Express", "Access-Control-Allow-Origin", "*", "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE", "Access-Control-Allow-Headers", "Content-Type", "Date", "Mon, 30 Jan 2017 17:34:57 GMT", "Transfer-Encoding", "chunked", "Via", "1.1 vegur"],
+    "reqheaders": {
+        "accept": "application/json",
+        "origin": "http://editor.swagger.io",
+        "accept-language": "en-US,en;q=0.8,fa;q=0.6,sv;q=0.4",
+        "referer": "http://editor.swagger.io/",
+        "accept-encoding": "gzip, deflate, sdch, br",
+        "connection": "close",
+        "content-length": 0,
+        "accept-charset": "utf-8",
+        "host": "petstore-api.herokuapp.com"
+    }
+}]

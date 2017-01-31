@@ -1,13 +1,21 @@
-const sourcePort = process.env.SPY_PORT || 8080
+const spyPort = process.env.SPY_PORT || 8080
+const ctrlPort = process.env.SPY_CTRL_PORT || 8081
 const Target = process.env.SPY_TARGET || 'http://127.0.0.1:80'
 
-var nockDB = []
 //
 // Create a proxy server with custom application logic
 //
-var proxy = require('express-http-proxy')
-var app = require('express')()
-var nock = require('nock')
+
+const proxy = require('express-http-proxy')
+const express = require('express')
+const cors = require('cors')
+const app = express()
+const proxyApp = express()
+const nock = require('nock')
+const path = require('path')
+const n2s = require('./nock2swagger')
+
+var nockDB = []
 
 // store the recorded object in the datastore
 function store (obj) {
@@ -26,34 +34,37 @@ nock.recorder.rec({
 })
 
 // get the database of recorded items
-app.use('/swaggerSpy/get', function (req, res, next) {
-  res.end(JSON.stringify(nockDB))
+app.use('/api/raw', function (req, res, next) {
+  res.send(nockDB)
+// next()
+})
+
+app.use('/api/swagger', function (req, res, next) {
+  res.send(n2s.generate(nockDB))
 // next()
 })
 
 // clear the database
-app.use('/swaggerSpy/reset', function (req, res, next) {
+app.use('/api/reset', function (req, res, next) {
   nockDB = []
-  res.end('[]')
+  res.send()
 // next()
 })
 
-// put req stream into the body so we can pick it up later
-// app.use(function(req, res, next) {
-//       var received = []
-//       req.on('data', function onData(chunk) {
-//         if (!chunk) { return; }
-//         received.push(chunk)
-//       })
-//       req.on('end', function onEnd() {
-//         req.body= Buffer.concat(received).toString('utf8')
-//         next()
-//       })
-//     })
+// load demodata
+app.use('/api/loadDemoData', function (req, res, next) {
+  const demoData = require('./testdata.json')
+  nockDB = JSON.parse(JSON.stringify(demoData))
+  res.send()
+// next()
+})
 
-// application/x-www-form-urlencoded
+app.use('/', express.static(path.join(__dirname, 'public')))
 
-app.use('/', proxy(Target))
+console.log(`swaggerSpy controller listening on port ${ctrlPort}`)
+app.listen(ctrlPort)
 
-console.log(`listening on port ${sourcePort} and proxying to ${Target}`)
-app.listen(sourcePort)
+proxyApp.use(cors())
+proxyApp.use('/', proxy(Target))
+console.log(`swaggerSpy proxy listening on port ${spyPort} and proxying to ${Target}`)
+proxyApp.listen(spyPort)

@@ -1,0 +1,121 @@
+[{
+    "scope": "http://192.168.99.100:31313",
+    "method": "GET",
+    "path": "/v1/functions",
+    "body": "",
+    "status": 200,
+    "response": [],
+    "rawHeaders": ["Date", "Thu, 26 Jan 2017 20:06:46 GMT", "Content-Length", "2", "Content-Type", "text/plain; charset=utf-8", "Connection", "close"],
+    "reqheaders": {
+        "accept-encoding": "gzip",
+        "connection": "close",
+        "content-length": 0,
+        "accept-charset": "utf-8",
+        "host": "192.168.99.100:31313"
+    }
+}, {
+    "scope": "http://192.168.99.100:31313",
+    "method": "POST",
+    "path": "/v1/environments",
+    "body": {
+        "metadata": {
+            "name": "nodejs"
+        },
+        "runContainerImageUrl": "fission/node-env"
+    },
+    "status": 200,
+    "response": {
+        "name": "nodejs",
+        "uid": "46bc3710-172c-4a47-9d0d-9890f649a8cf"
+    },
+    "rawHeaders": ["Date", "Thu, 26 Jan 2017 20:07:36 GMT", "Content-Length", "62", "Content-Type", "text/plain; charset=utf-8", "Connection", "close"],
+    "reqheaders": {
+        "content-type": "application/json",
+        "accept-encoding": "gzip",
+        "connection": "close",
+        "content-length": 72,
+        "accept-charset": "utf-8",
+        "host": "192.168.99.100:31313"
+    }
+},{
+    "scope": "http://192.168.99.100:31313",
+    "method": "POST",
+    "path": "/v1/environments",
+    "body": {
+        "metadata": {
+            "name": "nodejs",
+             "age": 22
+        },
+        "runContainerImageUrl": "fission/node-env"
+    },
+    "status": 200,
+    "response": {
+        "name": "nodejs",
+        "uid": "46bc3710-172c-4a47-9d0d-9890f649a8cf"
+    },
+    "rawHeaders": ["Date", "Thu, 26 Jan 2017 20:07:36 GMT", "Content-Length", "62", "Content-Type", "text/plain; charset=utf-8", "Connection", "close"],
+    "reqheaders": {
+        "content-type": "application/json",
+        "accept-encoding": "gzip",
+        "connection": "close",
+        "content-length": 72,
+        "accept-charset": "utf-8",
+        "host": "192.168.99.100:31313"
+    }
+},
+{
+    "scope": "http://192.168.99.100:31313",
+    "method": "POST",
+    "path": "/v1/functions",
+    "body": {
+        "metadata": {
+            "name": "hello"
+        },
+        "environment": {
+            "name": "nodejs"
+        },
+        "code": "bW9kdWxlLmV4cG9ydHMgPSBmdW5jdGlvbihjb250ZXh0LCBjYWxsYmFjaykgeyBjYWxsYmFjaygyMDAsICJIZWxsbywgd29ybGQhXG4iKTsgfSANCg=="
+    },
+    "status": 200,
+    "response": {
+        "name": "hello",
+        "uid": "6837a2cf-828e-4e76-8649-fcb09130695f"
+    },
+    "rawHeaders": ["Date", "Thu, 26 Jan 2017 20:07:36 GMT", "Content-Length", "61", "Content-Type", "text/plain; charset=utf-8", "Connection", "close"],
+    "reqheaders": {
+        "content-type": "application/json",
+        "accept-encoding": "gzip",
+        "connection": "close",
+        "content-length": 187,
+        "accept-charset": "utf-8",
+        "host": "192.168.99.100:31313"
+    }
+}, {
+    "scope": "http://192.168.99.100:31313",
+    "method": "POST",
+    "path": "/v1/triggers/http",
+    "body": {
+        "metadata": {
+            "name": "d704a734-69d3-417e-ba18-4ff0e3735e32"
+        },
+        "urlpattern": "/hello",
+        "method": "GET",
+        "function": {
+            "name": "hello"
+        }
+    },
+    "status": 200,
+    "response": {
+        "name": "d704a734-69d3-417e-ba18-4ff0e3735e32",
+        "uid": "eaedb3d9-11fc-4af7-ad62-fd7fbbb7e257"
+    },
+    "rawHeaders": ["Date", "Thu, 26 Jan 2017 20:07:36 GMT", "Content-Length", "92", "Content-Type", "text/plain; charset=utf-8", "Connection", "close"],
+    "reqheaders": {
+        "content-type": "application/json",
+        "accept-encoding": "gzip",
+        "connection": "close",
+        "content-length": 125,
+        "accept-charset": "utf-8",
+        "host": "192.168.99.100:31313"
+    }
+}]
